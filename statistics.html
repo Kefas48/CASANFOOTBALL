@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CASANFOOTBALL Statistics - St. Matthew's Parish, Amawbia Intrasports Competition">
+  <title>CASANFOOTBALL | Statistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./statistics.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="CASANFOOTBALL home">
+      <div class="crest" aria-hidden="true">
+        <div class="cross">✚</div><div class="crest-ball">⚽</div>
+      </div>
+      <div class="brand-copy">
+        <div class="brand-name">CASAN<span>FOOTBALL</span></div>
+        <div class="brand-parish">St. Matthew's Parish, Amawbia</div>
+        <div class="brand-motto">Nearer to the altar, Nearer to God.</div>
+      </div>
+    </a>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">⌂ <span>Home</span></a>
+      <a href="News.html">▤ <span>News</span></a>
+      <a href="fixtures.html">▦ <span>Fixtures</span></a>
+      <a href="fixtures.html?tab=results">🏆 <span>Results</span></a>
+      <a href="statistics.html" class="active">▥ <span>Statistics</span></a>
+      <a href="admin.html" class="admin-portal-link" style="background:#0e366b;border:1px solid #ffd21a;color:#ffd21a">⚙ <span>Admin</span></a>
+    </nav>
+    <button class="search-button" id="searchButton" aria-label="Search">⌕</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow"><span class="eyebrow-icon">▮▮▮</span> STATISTICS</div>
+    <h1>FOOTBALL STATISTICS</h1>
+    <p>Track the top performers, key stats and important numbers from the<br class="desktop-only">
+      CASANFOOTBALL Intrasports Competition.</p>
+    <div class="hero-slogan">Same Parish <b>•</b> Same Family <b>•</b> One Goal</div>
+  </div>
+</section>
+
+<main class="page">
+  <div class="statistics-layout">
+
+    <aside class="stats-sidebar">
+      <div class="stats-menu" id="statsMenu">
+        <button class="stats-link active" data-stat="overview">▦ <span>Overview</span></button>
+        <button class="stats-link" data-stat="goals">⚽ <span>Top Scorers</span></button>
+        <button class="stats-link" data-stat="assists">➤ <span>Top Assists</span></button>
+        <button class="stats-link" data-stat="chances">◎ <span>Chances Created</span></button>
+        <button class="stats-link" data-stat="passes">♧ <span>Passes Completed</span></button>
+        <button class="stats-link" data-stat="clean">♟ <span>Clean Sheets</span></button>
+        <button class="stats-link" data-stat="tackles">⬟ <span>Most Tackles</span></button>
+        <button class="stats-link" data-stat="cards">▣ <span>Yellow / Red Cards</span></button>
+        <button class="stats-link" data-stat="teams">♟ <span>Team Stats</span></button>
+      </div>
+      <div class="sidebar-note">
+        <div class="note-cross">✚</div>
+        <p>Football builds<br>teamwork, discipline<br>and unity. And in the end,<br>it’s all for His glory.</p>
+        <i></i>
+      </div>
+    </aside>
+
+    <section class="stats-content" id="statistics">
+
+      <div class="stat-grid">
+
+        <article class="stat-card" data-card="goals">
+          <div class="card-heading">
+            <div class="heading-icon ball">⚽</div>
+            <div><h2>Top Goal Scorers</h2><p>Most goals scored in the competition.</p></div>
+            <button class="view-all" data-open="goals">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Goals</span></div>
+          <div id="goalsTable"></div>
+        </article>
+
+        <article class="stat-card" data-card="assists">
+          <div class="card-heading">
+            <div class="heading-icon boot">➤</div>
+            <div><h2>Top Assists</h2><p>Most assists in the competition.</p></div>
+            <button class="view-all" data-open="assists">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Assists</span></div>
+          <div id="assistsTable"></div>
+        </article>
+
+        <article class="stat-card" data-card="chances">
+          <div class="card-heading">
+            <div class="heading-icon target">◎</div>
+            <div><h2>Top Chances Created</h2><p>Most chances created in the competition.</p></div>
+            <button class="view-all" data-open="chances">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Chances</span></div>
+          <div id="chancesTable"></div>
+        </article>
+
+        <article class="stat-card" data-card="passes">
+          <div class="card-heading">
+            <div class="heading-icon passes">♧</div>
+            <div><h2>Passes Completed</h2><p>Most passes completed in the competition.</p></div>
+            <button class="view-all" data-open="passes">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Passes</span></div>
+          <div id="passesTable"></div>
+        </article>
+
+        <article class="stat-card" data-card="clean">
+          <div class="card-heading">
+            <div class="heading-icon clean">♟</div>
+            <div><h2>Clean Sheets</h2><p>Most clean sheets in the competition.</p></div>
+            <button class="view-all" data-open="clean">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Clean Sheets</span></div>
+          <div id="cleanTable"></div>
+        </article>
+
+        <article class="stat-card" data-card="tackles">
+          <div class="card-heading">
+            <div class="heading-icon tackles">⬟</div>
+            <div><h2>Most Tackles</h2><p>Defensive tackles & ball recoveries.</p></div>
+            <button class="view-all" data-open="tackles">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Tackles</span></div>
+          <div id="tacklesTable"></div>
+        </article>
+
+        <article class="stat-card" data-card="cards">
+          <div class="card-heading">
+            <div class="heading-icon cards">▣</div>
+            <div><h2>Yellow / Red Cards</h2><p>Disciplinary table and bookings.</p></div>
+            <button class="view-all" data-open="cards">View All →</button>
+          </div>
+          <div class="table-labels"><span>#</span><span>Player</span><span>Team</span><span>Cards</span></div>
+          <div id="cardsTable"></div>
+        </article>
+
+        <article class="stat-card team-card" data-card="teams">
+          <div class="card-heading">
+            <div class="heading-icon teams">♟</div>
+            <div><h2>Team Statistics</h2><p>Overall team performance.</p></div>
+            <button class="view-all" data-open="teams">View All →</button>
+          </div>
+          <div class="team-labels"><span>#</span><span>Team</span><span>Goals For</span><span>Goals Against</span><span>Pts</span></div>
+          <div id="teamsTable"></div>
+        </article>
+
+      </div>
+
+      <section class="quick-stats">
+        <div class="quick-title"><strong>▮▮▮</strong><div><b>Quick Stats</b><small>At a glance</small></div></div>
+        <div class="quick-stat"><span>⚽</span><div><small>Total Goals</small><b id="totalGoals">76</b></div></div>
+        <div class="quick-stat"><span>➤</span><div><small>Total Assists</small><b id="totalAssists">42</b></div></div>
+        <div class="quick-stat"><span>◎</span><div><small>Total Chances Created</small><b id="totalChances">258</b></div></div>
+        <div class="quick-stat"><span>♧</span><div><small>Total Passes Completed</small><b id="totalPasses">2,476</b></div></div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-crest">✚⚽</div>
+      <div><strong>CASAN<span>FOOTBALL</span></strong><small>St. Matthew's Parish, Amawbia</small></div>
+    </div>
+    <div class="footer-motto"><i></i><em>Nearer to the altar, Nearer to God.</em><i></i></div>
+    <div class="footer-right">
+      <div class="social">
+        <a href="admin.html" title="Admin Portal">⚙</a>
+        <a href="#">f</a>
+        <a href="#">◎</a>
+        <a href="#">▶</a>
+      </div>
+      <div><strong>St. Matthew's Parish, Amawbia</strong><small>Altar Boys Association • <a href="admin.html" style="color:#ffd21a;text-decoration:underline">Admin Login</a></small></div>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="searchOverlay">
+  <div class="search-modal">
+    <button class="modal-close" id="closeSearch">×</button>
+    <h2>Search Statistics</h2>
+    <input type="search" id="searchInput" placeholder="Search a player or team...">
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-modal">
+    <button class="modal-close" id="closeDetail">×</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="dataStore.js"></script>
+<script src="statistics.js"></script>
+</body>
+</html>

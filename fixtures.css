@@ -1,0 +1,111 @@
+*{box-sizing:border-box}
+:root{--navy:#062d63;--deep:#031d43;--blue:#0a4b92;--gold:#ffd21a;--pale:#eef5fc;--line:#d8e5f1;--muted:#5d789b;--text:#062e64}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7fafc;color:var(--text);font-family:Inter,Arial,sans-serif}
+button{font:inherit}a{text-decoration:none;color:inherit}
+.site-header{height:88px;background:linear-gradient(90deg,#04285c,#08336d);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 14px #00172e40}
+.header-inner{width:min(1390px,calc(100% - 100px));height:100%;margin:auto;display:flex;align-items:center}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.crest{width:68px;height:76px;color:var(--gold);position:relative;text-align:center}
+.crest span{font-size:42px;line-height:44px}.crest b{position:absolute;bottom:2px;left:17px;font-size:28px}
+.brand-title{font-weight:900;font-size:25px;letter-spacing:-1px}.brand-title span{color:var(--gold)}
+.brand-parish{font-weight:700;font-size:14px;margin-top:2px}.brand-motto{font:italic 11px "Playfair Display",serif;margin-top:3px;color:#e0e9f6}
+nav{display:flex;align-items:center;gap:7px}
+nav a{display:flex;align-items:center;gap:10px;padding:13px 20px;border-radius:13px;font-weight:700;font-size:15px}
+nav a:hover,nav a.active{background:var(--gold);color:#102d5c}
+nav a span{font-size:20px}.search-btn{border:0;background:none;color:white;font-size:36px;margin-left:25px;cursor:pointer}.mobile-menu{display:none;background:none;border:0;color:white;font-size:28px}
+
+.hero{height:198px;position:relative;overflow:hidden;color:#fff}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,#021e4dcc 0%,#042b61c9 40%,#092d5040 100%),url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1900&q=85") center/cover}
+.hero-inner{position:relative;width:min(1390px,calc(100% - 100px));margin:auto;padding-top:32px}
+.eyebrow{font-size:12px;color:var(--gold);font-weight:900;display:flex;align-items:center;gap:12px}
+.eyebrow i{width:38px;height:4px;background:var(--gold)}
+.hero h1{font-size:54px;line-height:1;margin:8px 0 3px;font-weight:900;letter-spacing:-2px}
+.hero p{font-size:15px;line-height:1.4;margin:0;font-weight:600}
+.hero-slogan{font:italic 20px "Playfair Display",serif;color:var(--gold);margin-top:9px;word-spacing:10px}
+.hero-slogan b{font-family:Inter;font-size:13px;margin:0 8px}
+
+.page{width:min(1390px,calc(100% - 100px));margin:16px auto}
+.columns{display:grid;grid-template-columns:minmax(0,1fr) 450px;gap:20px}
+.main-column{min-width:0}
+.page-tabs{display:flex;gap:8px;margin:0 0 15px}
+.page-tab{height:42px;min-width:160px;border:0;border-radius:10px;background:#eaf2fb;color:#0a356c;font-weight:800;cursor:pointer;font-size:13px}
+.page-tab.active{background:#082f64;color:#fff}.page-tab span{margin-left:9px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:13px;box-shadow:0 2px 8px #0a386c09}
+.hidden{display:none!important}
+.panel-heading{height:54px;display:flex;align-items:center;padding:0 17px;border-bottom:1px solid #e0e9f2}
+.panel-heading h2{font-size:20px;margin:0;display:flex;align-items:center;gap:11px}
+.panel-heading h2:first-letter{font-size:24px}
+.text-link{border:0;background:none;color:#0754a0;font-size:11px;font-weight:800;cursor:pointer;margin-left:auto}
+.fixture-row{min-height:72px;display:grid;grid-template-columns:95px 180px minmax(290px,1fr) 100px 28px;align-items:center;gap:13px;padding:7px 14px;border-bottom:1px solid #e1eaf3}
+.fixture-row:last-child{border-bottom:0}
+.fixture-row:hover{background:#f8fbfe}
+.date-box{height:58px;border-radius:8px;background:#eaf2fb;text-align:center;padding:7px 4px;font-weight:800;color:#0b356d}
+.date-box .day{font-size:10px;text-transform:uppercase}.date-box .date{font-size:16px;margin-top:2px}
+.time-venue{font-size:10px;line-height:1.7}.time-venue strong{font-size:11px}.time-venue div{color:#59789d;margin-top:1px}
+.teams{display:flex;align-items:center;justify-content:center;gap:15px;font-weight:800;font-size:12px}
+.team{display:flex;align-items:center;gap:10px;min-width:100px}.team.right{flex-direction:row-reverse;text-align:right}
+.shield{width:31px;height:36px;clip-path:polygon(50% 0,90% 13%,87% 68%,50% 100%,13% 68%,10% 13%);display:grid;place-items:center;color:#fff;font-size:10px;font-weight:900;border:2px solid #173f72}
+.blue{background:#1681ed}.red{background:#ed4052}.green{background:#25a37d}.yellow{background:#ffd03b;color:#604800}.purple{background:#9b50db}.teal{background:#21b9b4}.orange{background:#fa6a2e}.gray{background:#bfc3c8;color:#333}
+.vs{font-size:12px}.status{justify-self:center;padding:6px 13px;border-radius:18px;background:#e7f2ff;color:#0761bb;font-size:9px;font-weight:800}.row-arrow{font-size:22px;color:#0c4788;cursor:pointer}
+
+.results-large .result-row{display:grid;grid-template-columns:120px 1fr 90px 1fr 190px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);font-size:11px}
+.results-large .result-row:last-child{border-bottom:0}
+.result-team{display:flex;align-items:center;gap:8px;font-weight:800}.result-team.away{justify-content:flex-end}.score{font-size:20px;font-weight:900;text-align:center;color:#082f64}
+.result-date{font-size:10px;color:#6682a3}.venue{font-size:10px;color:#6380a2}
+.scoreline-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:14px}
+.score-card{border:1px solid var(--line);border-radius:9px;padding:16px;background:#fbfdff}
+.score-card .sc-date{font-size:9px;color:#6984a4}.score-card h3{margin:9px 0;font-size:13px}.score-big{display:flex;align-items:center;justify-content:center;gap:20px;font-size:25px;font-weight:900}.score-big .score{font-size:27px}
+
+.recent-panel .panel-heading{height:47px}.compact h2{font-size:15px}
+.mini-result{display:grid;grid-template-columns:120px 1fr 100px 1fr 190px;align-items:center;min-height:48px;padding:6px 14px;border-bottom:1px solid var(--line);font-size:10px}
+.mini-result:last-child{border-bottom:0}.mini-date{font-size:9px;color:#617e9f}.mini-team{display:flex;align-items:center;gap:7px;font-weight:800}.mini-team.away{justify-content:flex-start}.mini-score{font-size:13px;font-weight:900;text-align:center}.mini-venue{font-size:9px;color:#6983a1}
+
+.sidebar{display:flex;flex-direction:column;gap:13px}
+.side-card{background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.side-heading{height:42px;background:linear-gradient(90deg,#062b60,#0a386f);color:#fff;display:flex;align-items:center;padding:0 15px;font-size:16px;font-weight:800}
+.side-heading.light{background:#fff;color:#082f64;border-bottom:1px solid var(--line);height:47px}
+.side-heading .text-link{color:#0754a0}
+.quick-links{padding:8px 12px}
+.quick-links button{width:100%;height:51px;border:1px solid #e0eaf3;background:#fbfdff;border-radius:8px;margin:0 0 7px;display:flex;align-items:center;text-align:left;padding:0 12px;color:#0b356a;cursor:pointer}
+.quick-links button:hover{background:#edf5fc}.qicon{font-size:22px;width:35px}.quick-links div{display:flex;flex-direction:column}.quick-links strong{font-size:12px}.quick-links small{font-size:9px;color:#6984a4;margin-top:2px}.quick-links b{margin-left:auto;font-size:20px;font-weight:400}
+.table-wrap{padding:4px 10px 9px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:9px}
+th{background:#eef5fc;font-size:8px;padding:7px 3px;text-align:center}td{padding:6px 3px;border-bottom:1px solid #e3ebf3;text-align:center}td:nth-child(2){text-align:left;font-weight:700}
+.table-team{display:flex;align-items:center;gap:7px;white-space:nowrap}.tiny-shield{width:15px;height:18px;clip-path:polygon(50% 0,90% 13%,87% 68%,50% 100%,13% 68%,10% 13%);display:inline-block}
+.next-match{padding:10px 13px}.next-line{display:grid;grid-template-columns:72px 90px 1fr;align-items:center;gap:10px}
+.next-date{background:#eaf2fb;border-radius:8px;text-align:center;padding:9px 4px}.next-date small{font-size:9px;font-weight:800}.next-date strong{display:block;font-size:14px;margin-top:3px}.next-info{font-size:9px;line-height:1.8}.next-info strong{font-size:10px}.next-teams{display:flex;justify-content:center;align-items:center;gap:8px;font-size:10px;font-weight:800}.next-teams .shield{width:29px;height:33px}
+
+footer{margin-top:10px;background:#062d63;color:white}
+.footer-inner{min-height:82px;width:min(1390px,calc(100% - 100px));margin:auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{display:flex;align-items:center;gap:8px}.footer-crest{font-size:29px;color:var(--gold)}
+.footer-brand strong{font-size:14px;display:block}.footer-brand strong span{color:var(--gold)}.footer-brand small{display:block;font-size:9px;margin-top:3px}
+.footer-motto{display:flex;gap:30px;align-items:center;font:italic 12px "Playfair Display",serif}.footer-motto i{width:45px;height:2px;background:var(--gold)}
+.social{display:flex;align-items:center;gap:10px}.social>a{width:26px;height:26px;background:#fff;color:#092f65;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:12px}.social div{margin-left:13px}.social strong,.social small{display:block;font-size:8px}.social small{margin-top:3px}
+
+.search-overlay,.match-modal{position:fixed;inset:0;background:#001a36d9;backdrop-filter:blur(7px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.search-overlay.open,.match-modal.open{display:flex}.search-box,.modal-card{width:min(620px,100%);background:#fff;border-radius:15px;padding:27px;position:relative;box-shadow:0 25px 80px #0007}.close-search,.close-modal{position:absolute;right:13px;top:8px;border:0;background:none;font-size:30px;color:#163c68;cursor:pointer}.search-box h2{margin-top:0}.search-box input{width:100%;border:1px solid #c9d8e7;border-radius:8px;padding:13px;outline:0}.search-result{display:block;border-bottom:1px solid #e0e8f0;padding:12px 0;font-size:12px}.search-result small{color:#7088a5}.modal-label{color:#0a56a0;font-size:10px;font-weight:900}.modal-card h2{font-size:28px}.modal-details{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}.modal-team{text-align:center;font-weight:800}.modal-team .shield{margin:0 auto 8px}.modal-score{font-size:28px;font-weight:900}.modal-extra{margin-top:20px;padding:15px;background:#f0f6fc;border-radius:9px;font-size:11px;color:#5e7898}
+
+@media(max-width:1150px){
+  .header-inner,.hero-inner,.page,.footer-inner{width:calc(100% - 40px)}
+  .columns{grid-template-columns:1fr}
+  .sidebar{display:grid;grid-template-columns:1fr 1fr}
+  .next-card{grid-column:1/-1}
+}
+@media(max-width:850px){
+  nav a{padding:11px 12px}.search-btn{margin-left:8px}
+  .fixture-row{grid-template-columns:80px 140px 1fr 75px 20px}.teams{gap:8px}.team{min-width:70px}
+  .results-large .result-row,.mini-result{grid-template-columns:90px 1fr 65px 1fr}
+  .results-large .venue,.mini-result .mini-venue{display:none}
+}
+@media(max-width:680px){
+  .site-header{height:76px}.header-inner{width:calc(100% - 25px)}
+  .brand-title{font-size:18px}.brand-parish{font-size:10px}.brand-motto{font-size:8px}.crest{transform:scale(.7);transform-origin:left center;width:48px}
+  .mobile-menu{display:block;margin-left:8px}nav{display:none;position:absolute;top:80px;left:12px;right:12px;background:#062d63;border-radius:10px;padding:8px;flex-direction:column;box-shadow:0 16px 35px #001a3d66}nav.open{display:flex}nav a{width:100%}
+  .hero{height:220px}.hero-inner{width:calc(100% - 30px);padding-top:30px}.hero h1{font-size:43px}.hero p{font-size:13px}.desktop{display:none}.hero-slogan{font-size:17px}
+  .page{width:calc(100% - 24px)}.page-tabs{overflow:auto}.page-tab{min-width:125px}
+  .fixture-row{grid-template-columns:70px 1fr;gap:8px;padding:10px}.fixture-row .teams{grid-column:1/-1;grid-row:2}.fixture-row .status{grid-column:1/2;grid-row:3;justify-self:start}.fixture-row .row-arrow{grid-column:2;grid-row:3;justify-self:end}.fixture-row .time-venue{grid-column:2}
+  .sidebar{display:flex}.scoreline-grid{grid-template-columns:1fr}
+  .footer-inner{width:calc(100% - 25px);padding:20px 0;flex-direction:column;align-items:flex-start;gap:18px}.footer-motto{order:3}
+  .social{flex-wrap:wrap}
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CASANFOOTBALL — St. Matthew's Parish, Amawbia Intrasports Competition">
+  <title>CASANFOOTBALL | St. Matthew's Parish, Amawbia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="#home" class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="cross">✚</span>
+          <span class="ball">⚽</span>
+        </div>
+        <div class="brand-copy">
+          <div class="brand-name">CASAN<span>FOOTBALL</span></div>
+          <div class="brand-parish">St. Matthew's Parish, Amawbia</div>
+          <div class="brand-subtitle">Intrasports Competition</div>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link active"><span>⌂</span> Home</a>
+        <a href="News.html" class="nav-link"><span>▤</span> News</a>
+        <a href="fixtures.html" class="nav-link"><span>▦</span> Fixtures</a>
+        <a href="fixtures.html?tab=results" class="nav-link"><span>🏆</span> Results</a>
+        <a href="statistics.html" class="nav-link"><span>▥</span> Statistics</a>
+        <a href="admin.html" class="nav-link admin-portal-btn"><span>⚙</span> Admin</a>
+      </nav>
+
+      <button class="search-btn" id="searchBtn" aria-label="Search">⌕</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <div class="hero-branding">
+          <div class="hero-emblem">
+            <div class="hero-cross">✚</div>
+            <div class="hero-ball">⚽</div>
+          </div>
+          <div>
+            <h1>CASAN<span>FOOTBALL</span></h1>
+            <h2>St. Matthew's Parish, Amawbia</h2>
+            <div class="gold-rule"></div>
+            <p class="motto">Nearer to the altar, Nearer to God.</p>
+          </div>
+        </div>
+
+        <div class="hero-values">
+          <div class="value">
+            <span class="value-icon">♟</span>
+            <div><strong>Our Altar Boys</strong><small>One Family</small></div>
+          </div>
+          <div class="value">
+            <span class="value-icon">⚽</span>
+            <div><strong>One Field</strong><small>One Spirit</small></div>
+          </div>
+          <div class="value">
+            <span class="value-icon">✚</span>
+            <div><strong>Same Mission</strong><small>Closer to God</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-grid container">
+      <article class="panel news-panel" id="news">
+        <div class="panel-heading">
+          <div class="heading-left"><span class="heading-icon">▤</span><h2>Latest News</h2></div>
+          <a href="News.html" class="view-all">View All →</a>
+        </div>
+        <div id="newsList" class="news-list"></div>
+      </article>
+
+      <article class="panel fixtures-panel" id="fixtures">
+        <div class="panel-heading">
+          <div class="heading-left"><span class="heading-icon">▦</span><h2>Upcoming Fixtures</h2></div>
+          <a href="fixtures.html" class="view-all">View All →</a>
+        </div>
+        <div id="fixtureList" class="fixture-list"></div>
+        <a href="fixtures.html" class="full-button">▦ &nbsp; View Full Fixtures</a>
+      </article>
+
+      <article class="panel stats-panel" id="statistics">
+        <div class="panel-heading">
+          <div class="heading-left"><span class="heading-icon">▥</span><h2>Top Statistics</h2></div>
+          <a href="statistics.html" class="view-all">View All →</a>
+        </div>
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="stats-note"><span>🏆</span><strong>Stats bring the numbers.</strong><small>The game brings us together.</small></div>
+      </article>
+    </section>
+
+    <section class="section-block container" id="results">
+      <div class="section-title-row">
+        <div><span class="eyebrow">MATCH CENTRE</span><h2>Recent Results</h2></div>
+        <a href="fixtures.html?tab=results" class="outline-button">View All Results →</a>
+      </div>
+      <div class="results-grid" id="resultsGrid"></div>
+    </section>
+
+    <section class="section-block container" id="statistics-details">
+      <div class="section-title-row">
+        <div><span class="eyebrow">COMPETITION DATA</span><h2>Statistics Overview</h2></div>
+        <a href="statistics.html" class="outline-button">Full Statistics →</a>
+      </div>
+      <div class="leaderboard">
+        <a href="statistics.html?stat=goals" class="leader-card-link">
+          <div class="leader-card">
+            <h3>Most Goals ↗</h3>
+            <div class="leader-row"><span class="rank">1</span><strong>Emeka Nwosu</strong><b>8</b><small>Goals</small></div>
+            <div class="leader-row"><span class="rank">2</span><strong>Chinedu Okafor</strong><b>6</b><small>Goals</small></div>
+            <div class="leader-row"><span class="rank">3</span><strong>Michael Uche</strong><b>5</b><small>Goals</small></div>
+          </div>
+        </a>
+        <a href="statistics.html?stat=assists" class="leader-card-link">
+          <div class="leader-card">
+            <h3>Most Assists ↗</h3>
+            <div class="leader-row"><span class="rank">1</span><strong>Chinedu Okafor</strong><b>5</b><small>Assists</small></div>
+            <div class="leader-row"><span class="rank">2</span><strong>Emeka Nwosu</strong><b>4</b><small>Assists</small></div>
+            <div class="leader-row"><span class="rank">3</span><strong>David Ibe</strong><b>3</b><small>Assists</small></div>
+          </div>
+        </a>
+        <a href="statistics.html?stat=chances" class="leader-card-link">
+          <div class="leader-card">
+            <h3>Chances Created ↗</h3>
+            <div class="leader-row"><span class="rank">1</span><strong>Joseph Eze</strong><b>12</b><small>Chances</small></div>
+            <div class="leader-row"><span class="rank">2</span><strong>Chinedu Okafor</strong><b>10</b><small>Chances</small></div>
+            <div class="leader-row"><span class="rank">3</span><strong>Emeka Nwosu</strong><b>9</b><small>Chances</small></div>
+          </div>
+        </a>
+        <a href="statistics.html?stat=passes" class="leader-card-link">
+          <div class="leader-card">
+            <h3>Passes Completed ↗</h3>
+            <div class="leader-row"><span class="rank">1</span><strong>Joseph Eze</strong><b>487</b><small>Passes</small></div>
+            <div class="leader-row"><span class="rank">2</span><strong>Michael Uche</strong><b>451</b><small>Passes</small></div>
+            <div class="leader-row"><span class="rank">3</span><strong>Chisom Okeke</strong><b>428</b><small>Passes</small></div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-brand">
+        <div class="footer-mark">✚⚽</div>
+        <div><strong>CASAN<span>FOOTBALL</span></strong><small>St. Matthew's Parish, Amawbia</small></div>
+      </div>
+      <div class="footer-motto"><span></span><em>Nearer to the altar, Nearer to God.</em><span></span></div>
+      <div class="footer-social">
+        <a href="admin.html" class="admin-footer-link" title="Admin Portal">⚙</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <div><strong>St. Matthew's Parish, Amawbia</strong><small>Altar Boys Association • <a href="admin.html" style="color:#ffd21a;text-decoration:underline">Admin Login</a></small></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-box">
+      <button class="close-search" id="closeSearch">×</button>
+      <h2>Search CASANFOOTBALL</h2>
+      <input id="siteSearch" type="search" placeholder="Search news, teams, fixtures, statistics...">
+      <div id="searchResults"></div>
+    </div>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+  <script src="dataStore.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

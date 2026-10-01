@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CASANFOOTBALL Fixtures, Results and Scorelines">
+  <title>CASANFOOTBALL — Fixtures & Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./fixtures.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="crest"><span>✚</span><b>⚽</b></div>
+      <div>
+        <div class="brand-title">CASAN<span>FOOTBALL</span></div>
+        <div class="brand-parish">St. Matthew's Parish, Amawbia</div>
+        <div class="brand-motto">Nearer to the altar, Nearer to God.</div>
+      </div>
+    </a>
+
+    <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+
+    <nav id="mainNav">
+      <a href="index.html"><span>⌂</span> Home</a>
+      <a href="News.html"><span>▤</span> News</a>
+      <a class="active" href="fixtures.html"><span>▦</span> Fixtures</a>
+      <a href="fixtures.html?tab=results"><span>🏆</span> Results</a>
+      <a href="statistics.html"><span>▥</span> Statistics</a>
+      <a href="admin.html" class="admin-portal-link" style="background:#0e366b;border:1px solid #ffd21a;color:#ffd21a"><span>⚙</span> Admin</a>
+    </nav>
+
+    <button class="search-btn" id="openSearch" aria-label="Search">⌕</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><i></i> FIXTURES &amp; RESULTS</div>
+    <h1>FIXTURES</h1>
+    <p>View upcoming matches, past results, and full scorelines for the<br class="desktop"> CASANFOOTBALL Intrasports Competition.</p>
+    <div class="hero-slogan">Same Parish <b>•</b> Same Family <b>•</b> One Goal</div>
+  </div>
+</section>
+
+<main class="page" id="fixtures">
+  <div class="columns">
+    <section class="main-column">
+      <div class="page-tabs" id="pageTabs">
+        <button class="page-tab active" data-panel="fixtures">▣ <span>Fixtures</span></button>
+        <button class="page-tab" data-panel="results">♜ <span>Results</span></button>
+        <button class="page-tab" data-panel="scorelines">⚽ <span>Scorelines</span></button>
+      </div>
+
+      <section class="panel fixture-panel active" id="fixturesPanel">
+        <div class="panel-heading">
+          <h2>▣ <span>Upcoming Fixtures</span></h2>
+          <button class="text-link" id="viewAllFixtures">View All Fixtures →</button>
+        </div>
+        <div class="fixture-list" id="fixtureList"></div>
+      </section>
+
+      <section class="panel hidden" id="resultsPanel">
+        <div class="panel-heading">
+          <h2>♜ <span>Recent Results</span></h2>
+          <button class="text-link">View All Results →</button>
+        </div>
+        <div class="results-large" id="resultsLarge"></div>
+      </section>
+
+      <section class="panel hidden" id="scorelinesPanel">
+        <div class="panel-heading">
+          <h2>⚽ <span>Full Scorelines</span></h2>
+          <button class="text-link">View All Scorelines →</button>
+        </div>
+        <div class="scoreline-grid" id="scorelineGrid"></div>
+      </section>
+
+      <section class="panel recent-panel">
+        <div class="panel-heading compact">
+          <h2>♜ <span>Recent Results</span></h2>
+          <button class="text-link" data-panel-link="results">View All Results →</button>
+        </div>
+        <div class="mini-results" id="miniResults"></div>
+      </section>
+    </section>
+
+    <aside class="sidebar">
+      <section class="side-card">
+        <div class="side-heading">▦ <span>Quick Navigation</span></div>
+        <div class="quick-links">
+          <button data-panel-link="fixtures"><span class="qicon">▣</span><div><strong>Fixtures</strong><small>View upcoming matches</small></div><b>›</b></button>
+          <button data-panel-link="results"><span class="qicon">♜</span><div><strong>Results</strong><small>See past match results</small></div><b>›</b></button>
+          <button data-panel-link="scorelines"><span class="qicon">⚽</span><div><strong>Scorelines</strong><small>Check match scorelines</small></div><b>›</b></button>
+        </div>
+      </section>
+
+      <section class="side-card league-card">
+        <div class="side-heading light">
+          <span>▥ &nbsp; League Table</span>
+          <a href="statistics.html?stat=teams" class="text-link" style="text-decoration:none">View Full Table →</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr></thead>
+            <tbody id="leagueTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="side-card next-card">
+        <div class="side-heading">
+          <span>⚽ &nbsp; Next Match</span>
+          <button class="text-link" id="nextMatchViewBtn">View All Fixtures →</button>
+        </div>
+        <div class="next-match" id="nextMatch"></div>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-crest">✚⚽</div>
+      <div><strong>CASAN<span>FOOTBALL</span></strong><small>St. Matthew's Parish, Amawbia</small></div>
+    </div>
+    <div class="footer-motto"><i></i><em>Nearer to the altar, Nearer to God.</em><i></i></div>
+    <div class="social">
+      <a href="admin.html" title="Admin Portal">⚙</a>
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Instagram">◎</a>
+      <a href="#" aria-label="YouTube">▶</a>
+      <div><strong>St. Matthew's Parish, Amawbia</strong><small>Altar Boys Association • <a href="admin.html" style="color:#ffd21a;text-decoration:underline">Admin Login</a></small></div>
+    </div>
+  </div>
+</footer>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <button class="close-search" id="closeSearch">×</button>
+    <h2>Search Fixtures & Results</h2>
+    <input id="searchInput" type="search" placeholder="Search team, date, venue...">
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<div class="match-modal" id="matchModal">
+  <div class="modal-card">
+    <button class="close-modal" id="closeModal">×</button>
+    <div class="modal-label">MATCH DETAILS</div>
+    <h2 id="modalTitle">Team A vs Team B</h2>
+    <div id="modalDetails"></div>
+  </div>
+</div>
+
+<script src="dataStore.js"></script>
+<script src="fixtures.js"></script>
+</body>
+</html>

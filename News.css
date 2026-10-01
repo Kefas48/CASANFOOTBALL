@@ -1,0 +1,110 @@
+*{box-sizing:border-box}
+:root{--navy:#062d63;--deep:#031d43;--blue:#0b4b91;--gold:#ffd21a;--text:#082d61;--muted:#56739a;--line:#dbe7f3}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f6f9fc;color:var(--text);font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.site-header{height:96px;background:linear-gradient(90deg,#04265a,#082f67);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 3px 18px #001c3b35}
+.header-inner{height:100%;width:min(1380px,calc(100% - 80px));margin:auto;display:flex;align-items:center;gap:26px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.crest{width:66px;height:78px;position:relative;color:var(--gold);text-align:center}
+.crest span{font-size:42px;line-height:44px;display:block}
+.crest b{font-size:28px;position:absolute;left:17px;bottom:1px}
+.brand-title{font-size:25px;font-weight:900;letter-spacing:-1px}
+.brand-title span{color:var(--gold)}
+.brand-parish{font-size:14px;font-weight:700;margin-top:2px}
+.brand-motto{font:italic 11px "Playfair Display",serif;margin-top:4px;color:#e1eafa}
+nav{display:flex;align-items:center;gap:7px}
+nav a{display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:13px;font-size:15px;font-weight:700;transition:.2s}
+nav a span{font-size:20px}
+nav a:hover,nav a.active{background:var(--gold);color:#102d5b}
+.search-button{background:none;border:0;color:white;font-size:36px;cursor:pointer;margin-left:6px}
+.mobile-menu{display:none;background:none;border:0;color:white;font-size:28px}
+
+.news-hero{height:220px;position:relative;overflow:hidden;color:white}
+.hero-bg{position:absolute;inset:0;background:
+linear-gradient(90deg,rgba(2,23,57,.98) 0%,rgba(4,34,70,.88) 42%,rgba(5,35,61,.28) 100%),
+url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1800&q=85") center 48%/cover}
+.hero-content{position:relative;width:min(1380px,calc(100% - 80px));margin:auto;padding-top:42px}
+.eyebrow{display:flex;align-items:center;gap:13px;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.2px}
+.eyebrow span{display:inline-block;width:40px;height:4px;background:var(--gold)}
+.news-hero h1{font-size:40px;margin:12px 0 7px;font-weight:900;letter-spacing:-1px}
+.news-hero p{margin:0;font-size:15px;line-height:1.55;color:#f0f5fb}
+.news-hero em{font-family:"Playfair Display",serif}
+
+.page{width:min(1380px,calc(100% - 80px));margin:27px auto 0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px}
+.category-tabs{display:flex;gap:8px;margin-bottom:21px;overflow-x:auto;padding-bottom:2px}
+.tab{white-space:nowrap;border:1px solid #dce9f5;background:#eef5fc;color:#0b376c;border-radius:11px;padding:12px 17px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}
+.tab:hover,.tab.active{background:#092f65;color:#fff;border-color:#092f65}
+.tab span{margin-left:5px}
+
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.article-card{background:#fff;border:1px solid #d7e4f0;border-radius:10px;overflow:hidden;box-shadow:0 3px 13px #0b376c0c;transition:transform .2s,box-shadow .2s}
+.article-card:hover{transform:translateY(-3px);box-shadow:0 9px 24px #0b376c1b}
+.article-image{height:164px;position:relative;background-size:cover;background-position:center}
+.badge{position:absolute;top:10px;left:10px;padding:7px 11px;border-radius:8px;color:#fff;font-size:10px;font-weight:900;letter-spacing:.1px}
+.badge.match{background:#f3c800;color:#101d2c}.badge.interview{background:#075fc0}.badge.team{background:#159a64}.badge.prediction{background:#7628c8}.badge.prepost{background:#f52c42}.badge.lineup{background:#159a64}
+.article-body{padding:14px 13px 12px}
+.article-body h2{font-size:14px;line-height:1.45;margin:0 0 8px;color:#062b60}
+.article-body p{font-size:12px;line-height:1.55;color:#5b779b;margin:0 0 17px;min-height:56px}
+.meta{display:flex;align-items:center;gap:16px;color:#6983a4;font-size:9px}
+.meta span{display:flex;align-items:center;gap:5px}
+.read-more{margin-left:auto;color:#0752a0;font-size:10px;font-weight:900;cursor:pointer;background:none;border:0;padding:0}
+.empty-state{display:none;padding:60px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:12px;color:#6a819e}
+
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.side-card{background:#fff;border:1px solid #d6e3ef;border-radius:10px;overflow:hidden}
+.side-title{height:50px;background:linear-gradient(90deg,#062b60,#0a386f);color:#fff;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:17px;font-weight:800}
+.side-title:first-letter{font-size:20px}
+.category-row{height:54px;border-bottom:1px solid #e2eaf2;display:flex;align-items:center;gap:12px;padding:0 15px;cursor:pointer;font-size:11px;font-weight:800}
+.category-row:hover{background:#f2f7fc}
+.category-row .cat-icon{font-size:19px;width:22px}
+.category-row .count{margin-left:auto;background:#edf4fb;border-radius:20px;padding:5px 9px;font-size:10px}
+.category-row .arrow{font-size:17px;color:#6e88a7;margin-left:10px}
+.latest-item{display:grid;grid-template-columns:68px 1fr 10px;gap:10px;padding:10px 14px;border-bottom:1px solid #e2eaf2;cursor:pointer}
+.latest-item:hover{background:#f5f9fd}
+.latest-item img{width:68px;height:47px;border-radius:7px;object-fit:cover}
+.latest-item h4{margin:0;font-size:10px;line-height:1.4;color:#092f65}
+.latest-item time{display:block;margin-top:5px;color:#7890ad;font-size:9px}
+.latest-item .arrow{align-self:center;color:#4775a7;font-size:16px}
+
+footer{margin-top:17px;background:#062d63;color:#fff}
+.footer-inner{min-height:86px;width:min(1380px,calc(100% - 80px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.footer-brand{display:flex;align-items:center;gap:9px}
+.footer-crest{font-size:30px;color:var(--gold)}
+.footer-brand strong{font-size:14px;display:block}.footer-brand strong span{color:var(--gold)}
+.footer-brand small{font-size:9px;display:block;margin-top:4px}
+.footer-motto{display:flex;align-items:center;gap:30px;font:italic 13px "Playfair Display",serif}
+.footer-motto i{width:47px;height:2px;background:var(--gold)}
+.social{display:flex;align-items:center;gap:12px}
+.social>a{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#092f65;font-weight:900;font-size:13px}
+.social div{margin-left:10px}.social strong,.social small{display:block;font-size:9px}.social small{margin-top:3px;color:#d2dfef}
+
+.search-overlay,.article-modal{position:fixed;inset:0;background:#001b3dcc;backdrop-filter:blur(7px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding-top:12vh}
+.search-overlay.open,.article-modal.open{display:flex}
+.search-box{width:min(650px,calc(100% - 30px));background:white;border-radius:16px;padding:28px;position:relative;box-shadow:0 25px 80px #0006}
+.close-search,.close-article{position:absolute;right:15px;top:10px;border:0;background:none;color:#153961;font-size:30px;cursor:pointer}
+.search-box h2{margin:0 0 17px}.search-box input{width:100%;padding:13px;border:1px solid #c7d7e7;border-radius:8px;outline:none}
+.search-result{display:block;padding:12px 0;border-bottom:1px solid #e1e9f1;font-size:12px}.search-result small{color:#7990aa}
+.article-modal{align-items:center;padding:20px}
+.article-dialog{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:14px;position:relative}
+.close-article{z-index:2;background:#fff;border-radius:50%;width:34px;height:34px;line-height:25px}
+.modal-image{height:280px;background-size:cover;background-position:center}
+.modal-body{padding:25px}.modal-category{display:inline-block;padding:7px 10px;border-radius:7px;background:#092f65;color:white;font-size:10px;font-weight:900}.modal-body h2{font-size:27px;line-height:1.2}.modal-meta{font-size:11px;color:#6e86a1}.modal-body p{font-size:14px;line-height:1.8;color:#536f91}
+
+@media(max-width:1050px){
+  .header-inner,.hero-content,.page,.footer-inner{width:calc(100% - 36px)}
+  nav a{padding:12px 12px}
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:grid;grid-template-columns:1fr 1fr}
+  .article-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .site-header{height:78px}.brand-title{font-size:18px}.brand-parish{font-size:10px}.brand-motto{font-size:8px}.crest{transform:scale(.72);transform-origin:left center;width:48px}
+  .mobile-menu{display:block;order:2}.search-button{order:3;font-size:30px}nav{position:absolute;display:none;left:18px;right:18px;top:83px;background:#062d63;padding:8px;border-radius:10px;flex-direction:column;box-shadow:0 15px 30px #00152e66}nav.open{display:flex}nav a{width:100%}
+  .news-hero{height:260px}.hero-content{padding-top:38px}.news-hero h1{font-size:32px}.news-hero p{font-size:13px}
+  .page{margin-top:17px}.article-grid{grid-template-columns:1fr}.sidebar{grid-template-columns:1fr}
+  .category-tabs{margin-bottom:15px}.tab{padding:11px 13px}
+  .article-image{height:190px}.footer-inner{padding:22px 0;flex-direction:column;align-items:flex-start}.footer-motto{order:3}.social{flex-wrap:wrap}
+}

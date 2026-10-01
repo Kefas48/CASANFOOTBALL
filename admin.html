@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASANFOOTBALL — Admin Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <a href="index.html" title="Go to Website Home" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit">
+          <div class="brand-mark">
+            <span class="cross">✚</span>
+            <span class="ball">⚽</span>
+          </div>
+          <div>
+            <div class="brand-name">CASAN<span>FOOTBALL</span></div>
+            <div class="brand-sub">St. Matthew’s Parish, Amawbia</div>
+            <div class="brand-tag">Nearer to the altar, Nearer to God.</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="nav-item active" href="#" data-section="dashboard"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="news-menu"><span class="nav-icon">▤</span><span>News</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="news-menu">
+            <a href="#" data-section="news">All News</a>
+            <a href="#" data-action="add-news">Add News Post</a>
+            <a href="#" data-section="categories">Categories</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="fixtures-menu"><span class="nav-icon">▣</span><span>Fixtures</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="fixtures-menu">
+            <a href="#" data-section="fixtures">All Fixtures</a>
+            <a href="#" data-action="add-fixture">Add Fixture</a>
+          </div>
+        </div>
+
+        <a class="nav-item" href="#" data-section="results"><span class="nav-icon">🏆</span><span>Results &amp; Scorelines</span></a>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="stats-menu"><span class="nav-icon">▥</span><span>Statistics</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="stats-menu">
+            <a href="#" data-section="stats-overview">Overview</a>
+            <a href="#" data-section="player-stats">Player Stats</a>
+            <a href="#" data-section="team-stats">Team Standings</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="teams-menu"><span class="nav-icon">♟</span><span>Teams</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="teams-menu">
+            <a href="#" data-section="teams">All Teams</a>
+            <a href="#" data-action="add-team">Add Team</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="players-menu"><span class="nav-icon">●</span><span>Players</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="players-menu">
+            <a href="#" data-section="players">All Players</a>
+            <a href="#" data-action="add-player">Add Player</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="media-menu"><span class="nav-icon">▧</span><span>Media</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="media-menu">
+            <a href="#" data-section="media">Media Library</a>
+            <a href="#" data-action="upload">Upload Media</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="pages-menu"><span class="nav-icon">▱</span><span>Pages</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="pages-menu">
+            <a href="#" data-section="pages">All Pages</a>
+            <a href="#" data-action="add-page">Add Page</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="users-menu"><span class="nav-icon">♙</span><span>Users</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="users-menu">
+            <a href="#" data-section="users">All Users</a>
+            <a href="#" data-action="add-user">Add User</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" data-toggle="settings-menu"><span class="nav-icon">⚙</span><span>Settings</span><span class="chevron">⌄</span></button>
+          <div class="submenu" id="settings-menu">
+            <a href="#" data-section="general-settings">General</a>
+            <a href="#" data-section="site-settings">Site Settings</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-quote">
+        <div class="quote-ball">⚽</div>
+        <strong>Manage.<br>Organise.<br>Keep the spirit alive.</strong>
+        <span></span>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="topbar-spacer"></div>
+        <a href="index.html" class="view-site-btn" target="_blank" title="Open public website in new tab">
+          <span>🌐</span> View Live Website ↗
+        </a>
+        <button class="icon-btn notification" id="notificationBtn" title="Notifications">♧<b>3</b></button>
+        <div class="top-divider"></div>
+        <button class="profile" id="profileBtn">
+          <div class="avatar">●</div>
+          <div class="profile-text"><strong>Admin</strong><small>Super Admin</small></div>
+          <span>⌄</span>
+        </button>
+      </header>
+
+      <main class="content">
+
+        <!-- 1. DASHBOARD SECTION -->
+        <section class="admin-section active" id="sec-dashboard">
+          <div class="welcome-row">
+            <div class="welcome">
+              <div class="wave">👋</div>
+              <div>
+                <h1>Welcome Back, Admin!</h1>
+                <p>Here’s what’s happening with CASANFOOTBALL today.</p>
+              </div>
+            </div>
+            <div class="date-card">
+              <span>▣</span>
+              <div><strong id="todayDate">Sat, Aug 23, 2025</strong><small id="todayTime">10:24 AM</small></div>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric blue" style="cursor:pointer" data-section="news">
+              <div class="metric-icon">▤</div>
+              <div><strong id="metricNewsCount">6</strong><span>News Posts</span><small>↑ Live on Website</small></div>
+            </article>
+            <article class="metric green" style="cursor:pointer" data-section="fixtures">
+              <div class="metric-icon">▣</div>
+              <div><strong id="metricFixturesCount">5</strong><span>Upcoming Fixtures</span><small>↑ Next Scheduled</small></div>
+            </article>
+            <article class="metric purple" style="cursor:pointer" data-section="teams">
+              <div class="metric-icon">♟</div>
+              <div><strong id="metricTeamsCount">8</strong><span>Teams</span><small>St. Matthew's Parish</small></div>
+            </article>
+            <article class="metric red" style="cursor:pointer" data-section="players">
+              <div class="metric-icon">●</div>
+              <div><strong id="metricPlayersCount">12</strong><span>Registered Players</span><small>Altar Boys</small></div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="left-column">
+              <article class="panel recent-news">
+                <div class="panel-header">
+                  <h2>▤ <span>Recent News</span></h2>
+                  <a href="#" data-section="news">View All News →</a>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+                    <tbody id="dashNewsTable"></tbody>
+                  </table>
+                </div>
+                <div class="panel-footer"><a href="#" data-section="news">Manage News Articles →</a></div>
+              </article>
+
+              <div class="two-panels">
+                <article class="panel">
+                  <div class="panel-header">
+                    <h2>▣ <span>Upcoming Fixtures</span></h2>
+                    <a href="#" data-section="fixtures">View All →</a>
+                  </div>
+                  <div class="compact-table">
+                    <div class="compact-head"><span>Date</span><span>Time</span><span>Teams</span><span>Venue</span><span>Actions</span></div>
+                    <div id="dashFixturesList"></div>
+                  </div>
+                </article>
+
+                <article class="panel">
+                  <div class="panel-header">
+                    <h2>🏆 <span>Latest Results</span></h2>
+                    <a href="#" data-section="results">View All →</a>
+                  </div>
+                  <div class="results-list" id="dashResultsList"></div>
+                </article>
+              </div>
+
+              <article class="panel overview-panel">
+                <div class="panel-header"><h2>▱ <span>System Overview</span></h2></div>
+                <div class="overview-stats">
+                  <div><small>Total Goals</small><strong id="dashTotalGoals">76</strong><span>Across matches</span></div>
+                  <div><small>Total Assists</small><strong id="dashTotalAssists">42</strong><span>Playmakers</span></div>
+                  <div><small>Total Passes</small><strong id="dashTotalPasses">2,476</strong><span>Distribution</span></div>
+                  <div><small>Altar Boy Teams</small><strong id="dashTotalTeams">8</strong><span>All active</span></div>
+                </div>
+              </article>
+            </div>
+
+            <aside class="right-column">
+              <article class="panel quick-actions">
+                <div class="panel-header"><h2>ϟ <span>Quick Actions</span></h2></div>
+                <button class="quick primary" data-action="add-news">＋ <span>Add News Post</span></button>
+                <button class="quick" data-action="add-fixture">▣ <span>Add Fixture</span></button>
+                <button class="quick" data-action="add-result">🏆 <span>Record Result / Scoreline</span></button>
+                <button class="quick" data-action="add-player">♙ <span>Add Player</span></button>
+                <button class="quick" data-action="upload">☁ <span>Upload Media</span></button>
+              </article>
+
+              <article class="panel activity-panel">
+                <div class="panel-header"><h2>♧ <span>Recent Activity</span></h2></div>
+                <div id="dashActivityList"></div>
+              </article>
+
+              <article class="panel server-panel">
+                <div class="panel-header"><h2>▤ <span>System Status</span></h2></div>
+                <div class="server-status"><span class="status-dot"></span><strong>Operational &amp; Live Synchronized</strong></div>
+                <p>Website database, fixtures tracker and media storage are running smoothly.</p>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <!-- 2. NEWS MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-news">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▤ News Management</h1>
+              <p>Create, edit, publish and manage articles for the CASANFOOTBALL news portal.</p>
+            </div>
+            <div class="head-actions">
+              <a href="News.html" target="_blank" class="btn-secondary">View News Page ↗</a>
+              <button class="btn-primary" data-action="add-news">＋ Add News Post</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <input type="search" id="newsSearchInput" class="filter-search" placeholder="Search news title, excerpt or author...">
+            <select id="newsCategoryFilter">
+              <option value="">All Categories</option>
+              <option value="Match Reports">Match Reports</option>
+              <option value="Interviews">Interviews</option>
+              <option value="Team News">Team News</option>
+              <option value="Predictions">Predictions</option>
+              <option value="Pre &amp; Post Match">Pre &amp; Post Match</option>
+              <option value="Lineups">Lineups</option>
+            </select>
+            <select id="newsStatusFilter">
+              <option value="">All Statuses</option>
+              <option value="Published">Published</option>
+              <option value="Draft">Draft</option>
+            </select>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Post Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Author</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="newsFullTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 3. CATEGORIES MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-categories">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▦ News Categories</h1>
+              <p>Organize competition reporting, match reviews, interviews and announcements.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-primary" data-action="add-category">＋ Add New Category</button>
+            </div>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Icon</th>
+                    <th>Category Name</th>
+                    <th>Articles Count</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="categoriesTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 4. FIXTURES MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-fixtures">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▣ Fixtures Management</h1>
+              <p>Schedule upcoming matches, set dates, kickoff times and pitch locations.</p>
+            </div>
+            <div class="head-actions">
+              <a href="fixtures.html" target="_blank" class="btn-secondary">View Fixtures Page ↗</a>
+              <button class="btn-primary" data-action="add-fixture">＋ Add Fixture</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <input type="search" id="fixtureSearchInput" class="filter-search" placeholder="Search team name, date, venue...">
+            <select id="fixtureVenueFilter">
+              <option value="">All Venues</option>
+              <option value="St. Matthew's Parish Field">St. Matthew's Parish Field</option>
+              <option value="Amawbia Youth Centre">Amawbia Youth Centre</option>
+            </select>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date &amp; Time</th>
+                    <th>Matchup (Home vs Away)</th>
+                    <th>Venue</th>
+                    <th>Status</th>
+                    <th>Quick Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="fixturesFullTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 5. RESULTS & SCORELINES SECTION -->
+        <section class="admin-section" id="sec-results">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>🏆 Match Results &amp; Scorelines</h1>
+              <p>Record full-time scorelines, match details and trigger automatic standings updates.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-secondary" id="recalcStandingsBtn">⚡ Recalculate Standings</button>
+              <button class="btn-primary" data-action="add-result">＋ Record Match Result</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <input type="search" id="resultsSearchInput" class="filter-search" placeholder="Filter by team or date...">
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Match Date</th>
+                    <th>Home Team</th>
+                    <th>Full Time Score</th>
+                    <th>Away Team</th>
+                    <th>Venue</th>
+                    <th>Stage</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsFullTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 6. STATISTICS OVERVIEW SECTION -->
+        <section class="admin-section" id="sec-stats-overview">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▥ Competition Statistics Overview</h1>
+              <p>Key tournament indicators, totals and performance milestones.</p>
+            </div>
+            <div class="head-actions">
+              <a href="statistics.html" target="_blank" class="btn-secondary">View Statistics Page ↗</a>
+              <button class="btn-primary" id="editTotalsBtn">✎ Edit Quick Totals</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr))">
+            <article class="metric blue">
+              <div class="metric-icon">⚽</div>
+              <div><strong id="statOverviewGoals">76</strong><span>Total Goals</span><small>Competition aggregate</small></div>
+            </article>
+            <article class="metric green">
+              <div class="metric-icon">➤</div>
+              <div><strong id="statOverviewAssists">42</strong><span>Total Assists</span><small>Key passes converted</small></div>
+            </article>
+            <article class="metric purple">
+              <div class="metric-icon">◎</div>
+              <div><strong id="statOverviewChances">258</strong><span>Chances Created</span><small>Opportunities</small></div>
+            </article>
+            <article class="metric red">
+              <div class="metric-icon">♧</div>
+              <div><strong id="statOverviewPasses">2,476</strong><span>Passes Completed</span><small>Accurate distribution</small></div>
+            </article>
+          </div>
+
+          <div class="settings-card" style="margin-top:16px">
+            <h3>Quick Actions for Statistics</h3>
+            <p>Select which aspect of tournament data you wish to manage:</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn-secondary" data-section="player-stats">Manage Player Stats (Scorers, Assists, Clean Sheets, Tackles, Cards) →</button>
+              <button class="btn-secondary" data-section="team-stats">Manage League Standings Table →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. PLAYER STATS SECTION -->
+        <section class="admin-section" id="sec-player-stats">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>● Player Statistics Management</h1>
+              <p>Top goal scorers, playmakers, goalkeepers, tackles and disciplinary records.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-primary" data-action="add-player-stat">＋ Add / Update Player Stat</button>
+            </div>
+          </div>
+
+          <div class="category-chips" id="playerStatCategoryChips">
+            <button class="cat-chip active" data-pstat="goals">⚽ Top Scorers</button>
+            <button class="cat-chip" data-pstat="assists">➤ Top Assists</button>
+            <button class="cat-chip" data-pstat="chances">◎ Chances Created</button>
+            <button class="cat-chip" data-pstat="passes">♧ Passes Completed</button>
+            <button class="cat-chip" data-pstat="clean">♟ Clean Sheets</button>
+            <button class="cat-chip" data-pstat="tackles">⬟ Most Tackles</button>
+            <button class="cat-chip" data-pstat="cards">▣ Yellow / Red Cards</button>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Team</th>
+                    <th>Value / Metric</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="playerStatsTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 8. TEAM STANDINGS SECTION -->
+        <section class="admin-section" id="sec-team-stats">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▥ League Standings Table</h1>
+              <p>Official points table, goal differences, games played and match records.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-secondary" id="autoSyncStandingsBtn">⚡ Recalculate From Results</button>
+              <button class="btn-primary" data-action="add-team">＋ Add Team to Table</button>
+            </div>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Team Name</th>
+                    <th>Played</th>
+                    <th>Won</th>
+                    <th>Drawn</th>
+                    <th>Lost</th>
+                    <th>Goals For</th>
+                    <th>Goals Against</th>
+                    <th>Goal Diff</th>
+                    <th>Points</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="teamStandingsTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 9. TEAMS MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-teams">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>♟ Teams Management</h1>
+              <p>Registered teams representing the altar boys of St. Matthew's Parish, Amawbia.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-primary" data-action="add-team">＋ Add New Team</button>
+            </div>
+          </div>
+
+          <div class="team-card-grid" id="teamsCardGrid"></div>
+        </section>
+
+        <!-- 10. PLAYERS MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-players">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>● Players Directory</h1>
+              <p>Roster of all registered altar boys participating in the competition.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-primary" data-action="add-player">＋ Add New Player</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <input type="search" id="playerSearchInput" class="filter-search" placeholder="Search player name, squad number or position...">
+            <select id="playerTeamFilter">
+              <option value="">All Teams</option>
+              <option value="Team A">Team A</option>
+              <option value="Team B">Team B</option>
+              <option value="Team C">Team C</option>
+              <option value="Team D">Team D</option>
+              <option value="Team E">Team E</option>
+              <option value="Team F">Team F</option>
+              <option value="Team G">Team G</option>
+              <option value="Team H">Team H</option>
+            </select>
+            <select id="playerPositionFilter">
+              <option value="">All Positions</option>
+              <option value="Forward">Forward</option>
+              <option value="Midfielder">Midfielder</option>
+              <option value="Defender">Defender</option>
+              <option value="Goalkeeper">Goalkeeper</option>
+            </select>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Team</th>
+                    <th>Position</th>
+                    <th>No.</th>
+                    <th>Goals</th>
+                    <th>Assists</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="playersFullTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 11. MEDIA LIBRARY SECTION -->
+        <section class="admin-section" id="sec-media">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▧ Media Library</h1>
+              <p>Match galleries, player photos, training sessions and event media.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-primary" data-action="upload">☁ Upload Media</button>
+            </div>
+          </div>
+
+          <div class="media-grid" id="mediaGalleryGrid"></div>
+        </section>
+
+        <!-- 12. PAGES MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-pages">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>▱ Website Pages Directory</h1>
+              <p>Directly enter, test and configure all interlinked site pages.</p>
+            </div>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Page Name</th>
+                    <th>File Slug</th>
+                    <th>Status</th>
+                    <th>SEO Title</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="pagesFullTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 13. USERS MANAGEMENT SECTION -->
+        <section class="admin-section" id="sec-users">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>♙ Users &amp; Administrators</h1>
+              <p>Manage access permissions for tournament coordinators, referees and editors.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn-primary" data-action="add-user">＋ Add New User</button>
+            </div>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email Address</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Last Active</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="usersFullTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- 14. GENERAL SETTINGS SECTION -->
+        <section class="admin-section" id="sec-general-settings">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>⚙ General Competition Settings</h1>
+              <p>Parish identity, competition naming, motto and official contacts.</p>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <h3>Competition &amp; Parish Identity</h3>
+            <p>These details are automatically reflected across the header, hero banners and footers of all pages.</p>
+
+            <form id="generalSettingsForm">
+              <div class="settings-grid">
+                <label>Competition Name
+                  <input type="text" id="setCompName" value="CASANFOOTBALL">
+                </label>
+                <label>Parish Name
+                  <input type="text" id="setParishName" value="St. Matthew's Parish, Amawbia">
+                </label>
+                <label>Parish Motto / Slogan
+                  <input type="text" id="setMotto" value="Nearer to the altar, Nearer to God.">
+                </label>
+                <label>Competition Subtitle
+                  <input type="text" id="setSubTitle" value="Intrasports Competition">
+                </label>
+                <label>Current Season
+                  <input type="text" id="setSeason" value="2025/2026">
+                </label>
+                <label>Organizing Body
+                  <input type="text" id="setAssociation" value="Altar Boys Association">
+                </label>
+                <label>Contact Email
+                  <input type="email" id="setContactEmail" value="info@casanfootball.org">
+                </label>
+                <label>Contact Phone
+                  <input type="text" id="setContactPhone" value="+234 800 CASAN 00">
+                </label>
+              </div>
+
+              <div class="form-actions" style="margin-top:20px">
+                <button type="submit" class="btn primary">Save General Settings</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 15. SITE SETTINGS SECTION -->
+        <section class="admin-section" id="sec-site-settings">
+          <div class="section-head">
+            <div class="section-head-title">
+              <h1>⚙ Site &amp; System Configuration</h1>
+              <p>Operational toggles, live center status, and tournament controls.</p>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <h3>Tournament Operations &amp; Features</h3>
+            <p>Control live scoring feeds, automatic point calculations and player registrations.</p>
+
+            <div class="settings-grid">
+              <div class="setting-toggle">
+                <div>
+                  <span>Live Score Feed</span>
+                  <small>Show live match score ticker to visitors</small>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="toggleLiveScore" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-toggle">
+                <div>
+                  <span>Automatic Table Calculation</span>
+                  <small>Auto-compute points and goal difference when score is saved</small>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="toggleAutoStandings" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-toggle">
+                <div>
+                  <span>Public Altar Server Registration</span>
+                  <small>Allow new servers to submit player profiles</small>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="toggleRegistration" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-toggle">
+                <div>
+                  <span>Maintenance Mode</span>
+                  <small>Display temporary maintenance notice on public site</small>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="toggleMaintenance">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions" style="margin-top:20px;justify-content:space-between">
+              <button class="btn secondary" id="resetDefaultsBtn" style="color:#ff6b7d;border-color:#ff6b7d">↺ Reset To Default Seed Data</button>
+              <button class="btn primary" id="saveSiteSettingsBtn">Save Site Settings</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="footer">
+        <span>CASAN<span>FOOTBALL</span> &nbsp; | &nbsp; St. Matthew’s Parish, Amawbia &nbsp; | &nbsp; Admin Control Center</span>
+        <div><i></i><em>Nearer to the altar, Nearer to God.</em></div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL DIALOG CONTAINER -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="dataStore.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
