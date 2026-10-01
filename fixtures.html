@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CASANFOOTBALL Fixtures, Results and Scorelines">
-  <title>CASANFOOTBALL — Fixtures & Results</title>
+  <title>CASANFOOTBALL — Match Centre: Fixtures &amp; Results</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@500;600&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
     <nav id="mainNav">
       <a href="index.html"><span>⌂</span> Home</a>
       <a href="News.html"><span>▤</span> News</a>
-      <a class="active" href="fixtures.html"><span>▦</span> Fixtures</a>
+      <a class="active" href="fixtures.html"><span>▦</span> Match Centre</a>
       <a href="fixtures.html?tab=results"><span>🏆</span> Results</a>
       <a href="statistics.html"><span>▥</span> Statistics</a>
       <a href="admin.html" class="admin-portal-link" style="background:#0e366b;border:1px solid #ffd21a;color:#ffd21a"><span>⚙</span> Admin</a>
@@ -40,9 +40,10 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="eyebrow"><i></i> FIXTURES &amp; RESULTS</div>
-    <h1>FIXTURES</h1>
-    <p>View upcoming matches, past results, and full scorelines for the<br class="desktop"> CASANFOOTBALL Intrasports Competition.</p>
+    <div class="eyebrow"><i></i> MATCH CENTRE</div>
+    <h1>FIXTURES &amp; RESULTS</h1>
+    <p>One definitive hub for every match — upcoming fixtures, full-time results,<br class="desktop">
+      scorecards and league standings for the CASANFOOTBALL Intrasports Competition.</p>
     <div class="hero-slogan">Same Parish <b>•</b> Same Family <b>•</b> One Goal</div>
   </div>
 </section>
@@ -50,52 +51,72 @@
 <main class="page" id="fixtures">
   <div class="columns">
     <section class="main-column">
+
+      <!-- ============== TOP MATCH CENTRE OVERVIEW (FIXTURES + RESULTS INTEGRATED) ============== -->
+      <section class="panel overview-band">
+        <div class="overview-band-head">
+          <h2>🎯 <span>Match Centre Overview</span></h2>
+          <small>Upcoming fixtures alongside the latest played results</small>
+        </div>
+
+        <div class="overview-band-grid">
+          <!-- NEXT FIXTURE -->
+          <article class="overview-card next-card-band">
+            <div class="band-label upcoming">
+              <span>⚽</span> NEXT FIXTURE
+            </div>
+            <div id="nextFixtureBand"></div>
+          </article>
+
+          <!-- LATEST RESULT -->
+          <article class="overview-card result-card-band">
+            <div class="band-label finished">
+              <span>🏁</span> LATEST RESULT
+            </div>
+            <div id="latestResultBand"></div>
+          </article>
+        </div>
+      </section>
+
       <div class="page-tabs" id="pageTabs">
-        <button class="page-tab active" data-panel="fixtures">▣ <span>Fixtures</span></button>
-        <button class="page-tab" data-panel="results">♜ <span>Results</span></button>
-        <button class="page-tab" data-panel="scorelines">⚽ <span>Scorelines</span></button>
+        <button class="page-tab active" data-panel="fixtures">▣ <span>Full Fixtures</span></button>
+        <button class="page-tab" data-panel="results">♜ <span>Full Results</span></button>
+        <button class="page-tab" data-panel="scorelines">⚽ <span>Score Cards</span></button>
       </div>
 
       <section class="panel fixture-panel active" id="fixturesPanel">
         <div class="panel-heading">
-          <h2>▣ <span>Upcoming Fixtures</span></h2>
-          <button class="text-link" id="viewAllFixtures">View All Fixtures →</button>
+          <h2>▣ <span>All Upcoming Fixtures</span></h2>
+          <span class="text-counter" id="fixtureCount"></span>
         </div>
         <div class="fixture-list" id="fixtureList"></div>
       </section>
 
       <section class="panel hidden" id="resultsPanel">
         <div class="panel-heading">
-          <h2>♜ <span>Recent Results</span></h2>
-          <button class="text-link">View All Results →</button>
+          <h2>♜ <span>All Match Results</span></h2>
+          <span class="text-counter" id="resultCount"></span>
         </div>
         <div class="results-large" id="resultsLarge"></div>
       </section>
 
       <section class="panel hidden" id="scorelinesPanel">
         <div class="panel-heading">
-          <h2>⚽ <span>Full Scorelines</span></h2>
-          <button class="text-link">View All Scorelines →</button>
+          <h2>⚽ <span>Score Cards Gallery</span></h2>
+          <span class="text-counter" id="scoreCount"></span>
         </div>
         <div class="scoreline-grid" id="scorelineGrid"></div>
       </section>
 
-      <section class="panel recent-panel">
-        <div class="panel-heading compact">
-          <h2>♜ <span>Recent Results</span></h2>
-          <button class="text-link" data-panel-link="results">View All Results →</button>
-        </div>
-        <div class="mini-results" id="miniResults"></div>
-      </section>
     </section>
 
     <aside class="sidebar">
       <section class="side-card">
         <div class="side-heading">▦ <span>Quick Navigation</span></div>
         <div class="quick-links">
-          <button data-panel-link="fixtures"><span class="qicon">▣</span><div><strong>Fixtures</strong><small>View upcoming matches</small></div><b>›</b></button>
-          <button data-panel-link="results"><span class="qicon">♜</span><div><strong>Results</strong><small>See past match results</small></div><b>›</b></button>
-          <button data-panel-link="scorelines"><span class="qicon">⚽</span><div><strong>Scorelines</strong><small>Check match scorelines</small></div><b>›</b></button>
+          <button data-panel-link="fixtures"><span class="qicon">▣</span><div><strong>Full Fixtures</strong><small>Browse all scheduled matches</small></div><b>›</b></button>
+          <button data-panel-link="results"><span class="qicon">♜</span><div><strong>All Results</strong><small>Completed matches &amp; scores</small></div><b>›</b></button>
+          <button data-panel-link="scorelines"><span class="qicon">⚽</span><div><strong>Score Cards</strong><small>Visual match scorecards</small></div><b>›</b></button>
         </div>
       </section>
 
@@ -114,8 +135,8 @@
 
       <section class="side-card next-card">
         <div class="side-heading">
-          <span>⚽ &nbsp; Next Match</span>
-          <button class="text-link" id="nextMatchViewBtn">View All Fixtures →</button>
+          <span>⚽ &nbsp; Upcoming This Week</span>
+          <button class="text-link" id="nextMatchViewBtn">All Fixtures →</button>
         </div>
         <div class="next-match" id="nextMatch"></div>
       </section>
@@ -143,7 +164,7 @@
 <div class="search-overlay" id="searchOverlay">
   <div class="search-box">
     <button class="close-search" id="closeSearch">×</button>
-    <h2>Search Fixtures & Results</h2>
+    <h2>Search Match Centre</h2>
     <input id="searchInput" type="search" placeholder="Search team, date, venue...">
     <div id="searchResults"></div>
   </div>

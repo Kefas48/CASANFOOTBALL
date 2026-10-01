@@ -1,5 +1,6 @@
 // CASANFOOTBALL Fixtures & Results Page Script
 // Connects with Central DataStore (CasanDB) and URL Query Parameters
+// Redesigned as a unified Match Centre: fixtures + results integrated
 
 (function() {
   if (typeof CasanDB === "undefined") {
@@ -14,6 +15,70 @@
   const shield = (color) => `<span class="shield ${color || 'blue'}"></span>`;
   const tinyShield = (color) => `<span class="tiny-shield ${color || 'blue'}"></span>`;
 
+  // ============== NEW: Top Match Centre Overview Band ==============
+  function renderOverviewBand() {
+    const nextFixEl = document.getElementById("nextFixtureBand");
+    const latestResEl = document.getElementById("latestResultBand");
+
+    if (nextFixEl) {
+      const next = fixtures[0];
+      if (!next) {
+        nextFixEl.innerHTML = `<div style="padding:16px;text-align:center;color:#7891ad;font-size:12px">No upcoming fixtures scheduled.</div>`;
+      } else {
+        nextFixEl.innerHTML = `
+          <div class="band-match">
+            <div class="band-date-block">
+              <span class="band-day">${next.day || 'MATCH'}</span>
+              <span class="band-date">${next.date || 'TBD'}</span>
+            </div>
+            <div class="band-teams-block">
+              <div class="band-team"><span>${next.home}</span>${shield(next.hc)}</div>
+              <div class="band-vs"><strong>VS</strong><small>${next.time || '10:00 AM'}</small></div>
+              <div class="band-team right">${shield(next.ac)}<span>${next.away}</span></div>
+            </div>
+            <div class="band-meta-block">
+              <strong>◷ ${next.time || '10:00 AM'}</strong>
+              <small>⌖ ${next.venue || "St. Matthew's Field"}</small>
+              <span class="status-pill upcoming">${next.status || 'Upcoming'}</span>
+            </div>
+          </div>`;
+      }
+    }
+
+    if (latestResEl) {
+      const latest = results[0];
+      if (!latest) {
+        latestResEl.innerHTML = `<div style="padding:16px;text-align:center;color:#7891ad;font-size:12px">No match results recorded yet.</div>`;
+      } else {
+        latestResEl.innerHTML = `
+          <div class="band-match result">
+            <div class="band-date-block">
+              <span class="band-day">${latest.day || 'FT'}</span>
+              <span class="band-date">${latest.date || '—'}</span>
+            </div>
+            <div class="band-teams-block">
+              <div class="band-team"><span>${latest.home}</span>${shield(latest.hc)}</div>
+              <div class="band-score"><strong>${latest.score}</strong><small>FULL TIME</small></div>
+              <div class="band-team right">${shield(latest.ac)}<span>${latest.away}</span></div>
+            </div>
+            <div class="band-meta-block">
+              <strong>🏆 ${latest.competition || 'Group Stage'}</strong>
+              <small>⌖ ${latest.venue || "St. Matthew's Field"}</small>
+              <span class="status-pill finished">Played</span>
+            </div>
+          </div>`;
+      }
+    }
+
+    const fixCount = document.getElementById("fixtureCount");
+    const resCount = document.getElementById("resultCount");
+    const scCount = document.getElementById("scoreCount");
+    if (fixCount) fixCount.textContent = `${fixtures.length} scheduled`;
+    if (resCount) resCount.textContent = `${results.length} played`;
+    if (scCount) scCount.textContent = `${results.length} scorecards`;
+  }
+
+  // ============== Fixtures List ==============
   function renderFixtures(list = fixtures) {
     const fixtureListEl = document.getElementById("fixtureList");
     if (!fixtureListEl) return;
@@ -47,20 +112,7 @@
     });
   }
 
-  function renderMiniResults() {
-    const miniEl = document.getElementById("miniResults");
-    if (!miniEl) return;
-
-    miniEl.innerHTML = results.slice(0, 3).map(r => `
-      <div class="mini-result">
-        <div class="mini-date"><strong>${r.day || 'FT'}</strong><br>${r.date}</div>
-        <div class="mini-team">${r.home} ${shield(r.hc)}</div>
-        <div class="mini-score">${r.score}</div>
-        <div class="mini-team away">${shield(r.ac)} ${r.away}</div>
-        <div class="mini-venue"><strong>Full Time</strong><br>${r.venue || "St. Matthew's Field"}</div>
-      </div>`).join("");
-  }
-
+  // ============== Results (Large rows) ==============
   function renderResults() {
     const resultsLargeEl = document.getElementById("resultsLarge");
     if (!resultsLargeEl) return;
@@ -76,10 +128,11 @@
         <div class="result-team">${r.home} ${shield(r.hc)}</div>
         <div class="score">${r.score}</div>
         <div class="result-team away">${shield(r.ac)} ${r.away}</div>
-        <div class="venue"><strong>Full Time</strong><br>${r.venue || "St. Matthew's Parish Field"}</div>
+        <div class="venue"><strong>${r.competition || 'Full Time'}</strong><br>${r.venue || "St. Matthew's Parish Field"}</div>
       </div>`).join("");
   }
 
+  // ============== Score Cards Gallery ==============
   function renderScorelines() {
     const scorelineGridEl = document.getElementById("scorelineGrid");
     if (!scorelineGridEl) return;
@@ -98,10 +151,15 @@
           <span class="score">${r.score}</span>
           <div>${shield(r.ac)}<br><small>${r.away}</small></div>
         </div>
-        <div class="modal-extra">Venue: ${r.venue || "St. Matthew's Parish Field"}</div>
+        <div class="modal-extra">
+          <strong>Venue:</strong> ${r.venue || "St. Matthew's Parish Field"}<br>
+          <strong>Home:</strong> ${r.homeScore != null ? r.homeScore : r.score.split('-')[0]} goals &nbsp; | &nbsp;
+          <strong>Away:</strong> ${r.awayScore != null ? r.awayScore : r.score.split('-')[1]} goals
+        </div>
       </article>`).join("");
   }
 
+  // ============== League Table ==============
   function renderTable() {
     const leagueTableEl = document.getElementById("leagueTable");
     if (!leagueTableEl) return;
@@ -122,17 +180,18 @@
     }).join("");
   }
 
+  // ============== Next Match Sidebar ==============
   function renderNext() {
     const nextMatchEl = document.getElementById("nextMatch");
     if (!nextMatchEl) return;
 
-    const f = fixtures[0];
-    if (!f) {
+    const nextThree = fixtures.slice(0, 3);
+    if (!nextThree.length) {
       nextMatchEl.innerHTML = `<p style="padding:10px;color:#7891ad;font-size:11px">No upcoming fixture scheduled.</p>`;
       return;
     }
 
-    nextMatchEl.innerHTML = `
+    nextMatchEl.innerHTML = nextThree.map(f => `
       <div class="next-line">
         <div class="next-date"><small>${f.day || 'NEXT'}</small><strong>${f.date || 'TBD'}</strong></div>
         <div class="next-info"><strong>◷ &nbsp;${f.time || '10:00 AM'}</strong><br>⌖ &nbsp;${f.venue || "St. Matthew's Field"}</div>
@@ -141,9 +200,10 @@
           <span>VS</span>
           <div>${shield(f.ac)}<br>${f.away}</div>
         </div>
-      </div>`;
+      </div>`).join("");
   }
 
+  // ============== Panel Switcher ==============
   function switchPanel(name) {
     document.querySelectorAll(".page-tab").forEach(b => {
       b.classList.toggle("active", b.dataset.panel === name);
@@ -175,11 +235,7 @@
     nextMatchViewBtn.onclick = () => switchPanel("fixtures");
   }
 
-  const viewAllFixtures = document.getElementById("viewAllFixtures");
-  if (viewAllFixtures) {
-    viewAllFixtures.onclick = () => switchPanel("fixtures");
-  }
-
+  // ============== Fixture / Result Modal ==============
   function openFixture(f) {
     if (!f) return;
     const modalTitle = document.getElementById("modalTitle");
@@ -213,7 +269,7 @@
     };
   }
 
-  // Search Overlay
+  // ============== Search Overlay ==============
   const searchOverlay = document.getElementById("searchOverlay");
   const openSearch = document.getElementById("openSearch");
   const closeSearch = document.getElementById("closeSearch");
@@ -282,14 +338,14 @@
     });
   }
 
-  // Mobile menu toggle
+  // ============== Mobile menu toggle ==============
   const mobileMenu = document.getElementById("mobileMenu");
   const mainNav = document.getElementById("mainNav");
   if (mobileMenu && mainNav) {
     mobileMenu.onclick = () => mainNav.classList.toggle("open");
   }
 
-  // Check URL query parameters for direct page linking
+  // ============== URL Query Params ==============
   function checkUrlParams() {
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get("tab");
@@ -311,27 +367,37 @@
     }
   }
 
-  // Initial render
+  // ============== Initial render ==============
+  renderOverviewBand();
   renderFixtures();
-  renderMiniResults();
   renderResults();
   renderScorelines();
   renderTable();
   renderNext();
   checkUrlParams();
 
-  // Listen for storage changes from Admin
+  // ============== Live Synchronization (Both Same-tab & Cross-tab) ==============
+  function refreshFromStore() {
+    fixtures = CasanDB.getFixtures();
+    results = CasanDB.getResults();
+    table = CasanDB.getTeams();
+    renderOverviewBand();
+    renderFixtures();
+    renderResults();
+    renderScorelines();
+    renderTable();
+    renderNext();
+  }
+
   window.addEventListener("casan_data_change", e => {
     if (e.detail && (e.detail.key === "casan_fixtures" || e.detail.key === "casan_results" || e.detail.key === "casan_teams")) {
-      fixtures = CasanDB.getFixtures();
-      results = CasanDB.getResults();
-      table = CasanDB.getTeams();
-      renderFixtures();
-      renderMiniResults();
-      renderResults();
-      renderScorelines();
-      renderTable();
-      renderNext();
+      refreshFromStore();
+    }
+  });
+
+  window.addEventListener("storage", e => {
+    if (e.key && (e.key === "casan_fixtures" || e.key === "casan_results" || e.key === "casan_teams")) {
+      refreshFromStore();
     }
   });
 })();

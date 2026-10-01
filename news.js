@@ -275,12 +275,21 @@
   renderSidebar();
   checkUrlParams();
 
-  // Listen for storage changes from Admin
+  function refreshFromStore() {
+    articles = CasanDB.getNews();
+    renderArticles();
+    renderSidebar();
+  }
+
   window.addEventListener("casan_data_change", e => {
     if (e.detail && e.detail.key === "casan_news") {
-      articles = CasanDB.getNews();
-      renderArticles();
-      renderSidebar();
+      refreshFromStore();
+    }
+  });
+
+  window.addEventListener("storage", e => {
+    if (e.key === "casan_news") {
+      refreshFromStore();
     }
   });
 })();

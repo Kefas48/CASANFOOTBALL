@@ -255,14 +255,23 @@
   renderTotals();
   checkUrlParams();
 
-  // Listen for storage changes from Admin
+  function refreshFromStore() {
+    statsData = CasanDB.getStats();
+    teamData = CasanDB.getTeams();
+    ["goals", "assists", "chances", "passes", "clean", "tackles", "cards"].forEach(renderPlayerTable);
+    renderTeams();
+    renderTotals();
+  }
+
   window.addEventListener("casan_data_change", e => {
     if (e.detail && (e.detail.key === "casan_stats" || e.detail.key === "casan_teams")) {
-      statsData = CasanDB.getStats();
-      teamData = CasanDB.getTeams();
-      ["goals", "assists", "chances", "passes", "clean", "tackles", "cards"].forEach(renderPlayerTable);
-      renderTeams();
-      renderTotals();
+      refreshFromStore();
+    }
+  });
+
+  window.addEventListener("storage", e => {
+    if (e.key && (e.key === "casan_stats" || e.key === "casan_teams")) {
+      refreshFromStore();
     }
   });
 })();
