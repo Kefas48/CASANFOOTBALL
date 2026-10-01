@@ -792,5 +792,28 @@
 
   <script src="dataStore.js"></script>
   <script src="admin.js"></script>
+  <script>
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"</script>
+
+    <script>
+    const SUPABASE_URL = "https://oflhxtnsowkcnrrfjuut.supabase.co"
+    const SUPABASE_KEY = "sb_publishable_53rAGqSi-cjgsn8H43mwsg_77cah_yV"
+
+    const supabaseClient = supabase.createclient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    async function checkAdmin()  {
+      const {data: {session} } = await
+      supabaseClient.auth.getsession();
+
+      if (!session) {
+        window.location.href = "login.html";
+      }
+    }
+      
+    checkAdmin();
+    </script>
 </body>
 </html>
