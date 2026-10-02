@@ -189,8 +189,7 @@
       { title: "Clean Sheets", type: "Statistics", url: "statistics.html?stat=clean", meta: "Goalkeeper records" },
       { title: "Most Tackles", type: "Statistics", url: "statistics.html?stat=tackles", meta: "Defensive rankings" },
       { title: "Yellow & Red Cards", type: "Statistics", url: "statistics.html?stat=cards", meta: "Disciplinary table" },
-      { title: "Team Statistics & League Table", type: "Statistics", url: "statistics.html?stat=teams", meta: "Standings and point table" },
-      { title: "Admin Dashboard", type: "Admin", url: "admin.html", meta: "Management & tournament settings" }
+      { title: "Team Statistics & League Table", type: "Statistics", url: "statistics.html?stat=teams", meta: "Standings and point table" }
     ];
   }
 

@@ -8,6 +8,50 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://oflhxtnsowkcnrrfjuut.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_53rAGqSi-cjgsn8H43mwsg_77cah_yV";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    window.supabaseClient = supabaseClient;
+
+    (async function gateAdminPage() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) {
+        document.body.innerHTML = '';
+        window.location.replace("login.html");
+        return;
+      }
+      window.__adminSession = session;
+      document.documentElement.setAttribute('data-auth-ok', '1');
+
+      const user = session.user || {};
+      const email = user.email || "admin@casanfootball.org";
+      const name = (user.user_metadata && user.user_metadata.full_name) || email.split('@')[0];
+
+      function applyUserInfo() {
+        const pName = document.getElementById("profileName");
+        const pEmail = document.getElementById("profileEmail");
+        if (pName) pName.textContent = String(name).charAt(0).toUpperCase() + String(name).slice(1);
+        if (pEmail) pEmail.textContent = email;
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", async () => {
+            try { await supabaseClient.auth.signOut(); } catch (e) {}
+            try { localStorage.removeItem("sb-oflhxtnsowkcnrrfjuut-auth-token"); } catch(e){}
+            window.location.replace("login.html");
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", applyUserInfo);
+      } else {
+        applyUserInfo();
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="app-shell">
@@ -120,11 +164,14 @@
         <a href="index.html" class="view-site-btn" target="_blank" title="Open public website in new tab">
           <span>🌐</span> View Live Website ↗
         </a>
+        <button class="view-site-btn" id="logoutBtn" title="Sign out of admin" style="background:#5a1e1e;border:1px solid #ff7777;color:#ffd4d4">
+          <span>🚪</span> Logout
+        </button>
         <button class="icon-btn notification" id="notificationBtn" title="Notifications">♧<b>3</b></button>
         <div class="top-divider"></div>
         <button class="profile" id="profileBtn">
           <div class="avatar">●</div>
-          <div class="profile-text"><strong>Admin</strong><small>Super Admin</small></div>
+          <div class="profile-text"><strong id="profileName">Admin</strong><small id="profileEmail">Super Admin</small></div>
           <span>⌄</span>
         </button>
       </header>
